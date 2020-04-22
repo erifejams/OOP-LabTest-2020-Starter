@@ -24,10 +24,13 @@ public class Gantt extends PApplet
 		}
 	}
 
-
+	//need to work on this 
 	public void printTasks()
 	{
-		
+		for(Task ta:tasks)
+		{	
+			println(ta);
+		}
 	}
 	
 	public void mousePressed()
@@ -44,6 +47,8 @@ public class Gantt extends PApplet
 	
 	public void setup() 
 	{
+		loadTasks();
+		printTasks();
 	}
 	
 	public void draw()
