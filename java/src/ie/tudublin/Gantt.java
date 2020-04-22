@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
+
 public class Gantt extends PApplet
 {	
 	//declaring an ArrayList to hold instances of the Task class
@@ -168,16 +169,39 @@ public class Gantt extends PApplet
 
 	public void mousePressed()
 	{
-		println("Mouse pressed");	
+		println("Mouse pressed");
+
+		/*the theory of my thought process, even though I could not implement it:
+		if the mouseX is on rest than the x value of rectangle will be  else if the mouseX is moving the x value of the 
+		rectangle will change. i*/
+		int dx = mouseX;// this is the x value of the rectangle
+		if (mouseX == 0)
+		{
+			dx = 0;
+		} else
+		{
+			mouseX = dx;
+		}
+		
 	}
 
+	float beyondStartRange = 300;
+	float beyondEndRange = 710;
 	public void mouseDragged()
 	{
 		println("Mouse dragged");
-	}
+		/*this is for the user will not be able to set the start or end of the task beyond the range 1-30 
+		and also should not be able to set the duration to be less than 1.  I could not implement the  dragging of the squares*/
+		if (mouseX < beyondStartRange) 
+		{
+			stop();
+		}
+		if (mouseX > beyondEndRange) 
+		{
+			stop();
+		}
 
-	
-	
+	}
 	public void setup() 
 	{
 		loadTasks();
@@ -186,6 +210,7 @@ public class Gantt extends PApplet
 	
 	public void draw()
 	{		
+		//calling those method to show
 		background(0);
 		displayBarLines();
 		displayTasks();
